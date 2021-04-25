@@ -1,19 +1,19 @@
 const productos = [
 	{
 		id: 0,
-		descripcion: 'Producto 1',
+		descripcion: "Producto 1",
 		precio: 50,
 		stock: 100,
 	},
 	{
 		id: 1,
-		descripcion: 'Producto 2',
+		descripcion: "Producto 2",
 		precio: 70,
 		stock: 200,
 	},
 	{
 		id: 2,
-		descripcion: 'Producto 3',
+		descripcion: "Producto 3",
 		precio: 90,
 		stock: 56,
 	},
@@ -21,25 +21,35 @@ const productos = [
 
 // Enlaces de variables a referencias HTML
 
-const stock1 = document.querySelector('#stock1');
-const stock2 = document.querySelector('#stock2');
-const stock3 = document.querySelector('#stock3');
+const stock1 = document.querySelector("#stock1");
+const stock2 = document.querySelector("#stock2");
+const stock3 = document.querySelector("#stock3");
 
-const precio1 = document.querySelector('#precio1');
-const precio2 = document.querySelector('#precio2');
-const precio3 = document.querySelector('#precio3');
+const precio1 = document.querySelector("#precio1");
+const precio2 = document.querySelector("#precio2");
+const precio3 = document.querySelector("#precio3");
 
-const btnSumarProd1 = document.querySelector('#sumarProd1');
-const btnSumarProd2 = document.querySelector('#sumarProd2');
-const btnSumarProd3 = document.querySelector('#sumarProd3');
+const btnSumarProd1 = document.querySelector("#sumarProd1");
+const btnSumarProd2 = document.querySelector("#sumarProd2");
+const btnSumarProd3 = document.querySelector("#sumarProd3");
 
-const btnRestarProd1 = document.querySelector('#restarProd1');
-const btnRestarProd2 = document.querySelector('#restarProd2');
-const btnRestarProd3 = document.querySelector('#restarProd3');
+const btnRestarProd1 = document.querySelector("#restarProd1");
+const btnRestarProd2 = document.querySelector("#restarProd2");
+const btnRestarProd3 = document.querySelector("#restarProd3");
 
-const total = document.querySelector('#total');
+const btnRestarProd1disabled = document.querySelector("#restarProd1disabled");
+const btnRestarProd2disabled = document.querySelector("#restarProd2disabled");
+const btnRestarProd3disabled = document.querySelector("#restarProd3disabled");
+
+const total = document.querySelector("#total");
 
 // variables generales
+
+const stocksIniciales = [
+	{ stockInicial: productos[0].stock },
+	{ stockInicial: productos[1].stock },
+	{ stockInicial: productos[2].stock },
+];
 
 const producto1 = productos[0];
 const producto2 = productos[1];
@@ -75,6 +85,7 @@ const sumarAlStock = (index, cant) => {
 			stock3.innerText = productos[2].stock;
 			break;
 	}
+	checkStock(index);
 };
 
 const restarAlStock = (index, cant) => {
@@ -93,6 +104,7 @@ const restarAlStock = (index, cant) => {
 			stock3.innerText = productos[2].stock;
 			break;
 	}
+	checkStock(index);
 };
 
 const sumarAlTotal = (cant, precio) => {
@@ -101,6 +113,44 @@ const sumarAlTotal = (cant, precio) => {
 
 const restarAlTotal = (cant, precio) => {
 	cantTotal -= cant * precio;
+};
+
+const checkStock = (index) => {
+	stocksIniciales[index].stockInicial <= productos[index].stock ? showDisabled(index) : showEnabled(index);
+};
+
+const showDisabled = (index) => {
+	switch (index) {
+		case 0:
+			btnRestarProd1disabled.style.display = "flex";
+			btnRestarProd1.style.display = "none";
+			break;
+		case 1:
+			btnRestarProd2disabled.style.display = "flex";
+			btnRestarProd2.style.display = "none";
+			break;
+		case 2:
+			btnRestarProd3disabled.style.display = "flex";
+			btnRestarProd3.style.display = "none";
+			break;
+	}
+};
+
+const showEnabled = (index) => {
+	switch (index) {
+		case 0:
+			btnRestarProd1disabled.style.display = "none";
+			btnRestarProd1.style.display = "flex";
+			break;
+		case 1:
+			btnRestarProd2disabled.style.display = "none";
+			btnRestarProd2.style.display = "flex";
+			break;
+		case 2:
+			btnRestarProd3disabled.style.display = "none";
+			btnRestarProd3.style.display = "flex";
+			break;
+	}
 };
 
 // esta es la forma de hacer que sume o reste al hacer clic en los botones, solo que usando el eventListener de JS en lugar de la propiedad onlick del HTML
