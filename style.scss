@@ -6,6 +6,7 @@
 
 body {
 	min-height: 100vh;
+	background-color: #333;
 }
 
 .contenedor {
@@ -50,8 +51,12 @@ body {
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+
 		img {
 			border-radius: 10px;
+			width: 200;
+			height: 200px;
+			object-fit: cover;
 		}
 
 		.botones {
@@ -85,7 +90,7 @@ body {
 			}
 
 			button.disabled {
-				background-color: gray;
+				background-color: #808080;
 				display: flex;
 
 				&:hover {

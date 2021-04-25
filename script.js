@@ -2,19 +2,19 @@ const productos = [
 	{
 		id: 0,
 		descripcion: "Producto 1",
-		precio: 50,
-		stock: 100,
+		precio: 1250,
+		stock: 83,
 	},
 	{
 		id: 1,
 		descripcion: "Producto 2",
-		precio: 70,
-		stock: 200,
+		precio: 2399,
+		stock: 34,
 	},
 	{
 		id: 2,
 		descripcion: "Producto 3",
-		precio: 90,
+		precio: 1699,
 		stock: 56,
 	},
 ];
